@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Space, Table, Tag, Button, message } from 'antd';
 
 const { Column, ColumnGroup } = Table;
@@ -32,6 +32,10 @@ const initialData = [
 
 const Users = () => {
   const [data, setData] = useState(initialData);
+
+  useEffect(() => {
+    axios.get ("http://localhost:5000/api")
+  }, []);  
 
   // Handle Delete
   const handleDelete = (key) => {

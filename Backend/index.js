@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/config');
 const router = require('./Routes/Auth-routes');
+const { formHandler } = require("./Controllers/Admin-controller");
+const getUsers = require("./Controllers/Getcontrolller");
 dotenv.config();
 
 const app = express();
@@ -26,7 +28,8 @@ console.log("Server file is executing...");
 console.log("Routes have been set up.");
 
 app.use('/api/auth', router);
-
+app.post("/api",formHandler)
+app.get("/api", getUsers)
 
 
 

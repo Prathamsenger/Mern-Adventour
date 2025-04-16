@@ -4,9 +4,11 @@ import "react-toastify/dist/ReactToastify.css"
 import axios from 'axios';
 
 const Form = () => {
-  const [name, setName] = useState('');
+  const [username, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+
   const [role, setRole] = useState('User'); // Default role is 'User'
 
   const successToast = () => {
@@ -28,10 +30,11 @@ const Form = () => {
     };
     const SignupUser = async () => {
       try {
-        const response = await axios.post("http://localhost:5000/api/auth/form", {
-          name,
+        const response = await axios.post("http://localhost:5000/api", {
+          username,
           email,
           password,
+          phone,
           role,
         });
     
@@ -54,7 +57,7 @@ const Form = () => {
     await SignupUser(); // Call loginUser on form submission
 
     
-    console.log({ name, email, password, role });
+    console.log({ username, email, phone,password, role });
     alert(`Form submitted with role: ${role}`);
 
   };
@@ -69,7 +72,7 @@ const Form = () => {
           <label className="block text-gray-700 font-medium mb-2">Name:</label>
           <input
             type="text"
-            value={name}
+            value={username}
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter your name"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -98,6 +101,17 @@ const Form = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 font-medium mb-2">Phone:</label>
+          <input
+            type="number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Enter your number"
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             required
           />
