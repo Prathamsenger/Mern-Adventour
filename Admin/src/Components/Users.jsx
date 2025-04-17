@@ -1,32 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { Space, Table, Tag, Button, message } from 'antd';
+import axios from 'axios';
 
 const { Column, ColumnGroup } = Table;
 
 const initialData = [
   {
     key: '1',
-    firstName: 'John',
-    lastName: 'Brown',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
+   username:"john",
+   email: 'john@example.com',
+   Password: '4435325346',
+   phone:"543543543543",
+   role: ['admin','user'],
+   tags: ['admin,user'],
+
+
   },
   {
     key: '2',
-    firstName: 'Jim',
-    lastName: 'Green',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
+    username:"jim",
+   email: 'john@4example.com',
+   Password: '44353256',
+   phone:"5435435435",
+   role: ['admin,user'],
+   tags: ['admin,user'],
+
   },
   {
     key: '3',
-    firstName: 'Joe',
-    lastName: 'Black',
-    age: 32,
-    address: 'Sydney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
+    username:"josh",
+   email: 'john@3example.com',
+   Password: '44353256',
+   phone:"5435435435",
+   role: ['admin','user'],
+   tags: ['admin,user'],
   },
 ];
 
@@ -65,26 +72,21 @@ const Users = () => {
         </Button>
       </div>
       <Table dataSource={data}>
-        <ColumnGroup title="Name">
-          <Column title="First Name" dataIndex="firstName" key="firstName" />
-          <Column title="Last Name" dataIndex="lastName" key="lastName" />
-        </ColumnGroup>
-        <Column title="Age" dataIndex="age" key="age" />
-        <Column title="Address" dataIndex="address" key="address" />
+       
         <Column
           title="Tags"
           dataIndex="tags"
           key="tags"
-          render={(tags) => (
+          render={(role) => (
             <>
-              {tags.map((tag) => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
+              {(role || []).map((role) => {
+                let color = role.length > 5 ? 'admin' : 'user';
+                if (role === 'user') {
+                  color = 'green';
                 }
                 return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
+                  <Tag color={color} key={role}>
+                    {role.toUpperCase()}
                   </Tag>
                 );
               })}
