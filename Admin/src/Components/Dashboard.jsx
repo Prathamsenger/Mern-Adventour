@@ -8,7 +8,7 @@ import {
 } from '@ant-design/icons';
 import { Button, Form, Layout, Menu, theme } from 'antd';
 import { Link } from 'react-router-dom';
-import Users from './Users';
+import User from './User';
 import TeamForm from './Form';
 import Login from './Login';
 
@@ -104,7 +104,7 @@ const Dashboard = () => {
           }}
         >
            {currentPath === '4' && <Login onLogin={handleLogin} />} {/* Show Login */}
-          {isAuthenticated && currentPath === '2' && <Users />} {/* Show Users if logged in */}
+          {isAuthenticated && currentPath === '2' && <User />} {/* Show Users if logged in */}
           {isAuthenticated && currentPath === '3' && <TeamForm />} {/* Show Form if logged in */}
         </Content>
       </Layout>

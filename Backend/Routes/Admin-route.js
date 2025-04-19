@@ -1,9 +1,12 @@
 const express = require('express');
-const routers = express.Router();
-const { formHandler } = require('../Controllers/Admin-controller');
+const getAllusers = require("../Controllers/Admin-controller")
+
+const router = express.Router();
 
 
 
-router.post('/form', formHandler);
 
-module.exports = routers;
+
+router.route("/users").get(getAllusers)
+
+module.exports = router;
