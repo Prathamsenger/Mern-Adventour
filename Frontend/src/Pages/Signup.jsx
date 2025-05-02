@@ -24,7 +24,7 @@ const SignUp = () => {
   };
 
   const errorToast = () => {
-    toast.error("Invalid credentials, please signup", {
+    toast.error("Invalid credentials", {
       position: "top-center",
     });
   };

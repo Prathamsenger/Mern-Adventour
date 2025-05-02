@@ -8,7 +8,7 @@ const {login ,register}= require('../Controllers/Authcontroller');
 router.route("/login").post(login);
 router.route("/register").post(register);
 router.get("/protected", authenticateToken, (req, res) => {
-    res.status(200).json({ message: "This is a protected route", user: req.user });
+    res.status(200).json({ msg: "This is a protected route", user: req.user });
   });
   
 
