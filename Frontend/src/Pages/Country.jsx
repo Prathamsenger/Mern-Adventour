@@ -40,7 +40,6 @@ export default function CountryNavPage() {
           </ul>
         </div>
 
-        {/* Main Content */}
         <div className="md:w-3/4 bg-gray-800 p-6 rounded-xl shadow-lg">
           <h2 className="text-3xl font-semibold mb-4">{selectedCountry.name}</h2>
           <h3 className="text-xl font-semibold mb-2">Famous Places</h3>
