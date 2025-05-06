@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { FaLocationDot } from "react-icons/fa6";
 
-
 const Home = () => {
   return (
     <div className="min-h-screen bg-white-50 text-white">
