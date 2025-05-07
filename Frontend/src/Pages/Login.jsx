@@ -4,7 +4,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axiosInstance from "../../axiosinstances";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -34,47 +34,49 @@ const Login = () => {
         password,
       });
 
-      localStorage.setItem("token", response.data.token);
-
       if (response.status === 200) {
+        // Save token to localStorage
+        localStorage.setItem("token", response.data.token);
+
         successToast();
+
+        onLogin();
+
         setTimeout(() => {
           navigate("/");
         }, 2000);
       } else if (response.status === 400) {
         doesNotExistToast();
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
       } else {
         errorToast();
       }
     } catch (error) {
       errorToast();
-      console.log(error);
+      console.error(error);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await loginUser(); // Call loginUser on form submission
+    await loginUser();
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-green-300 to-yellow-300">
-      <div className="flex bg-white rounded-lg shadow-lg w-3/6 h-[500px] ">
-    
-        <div className="w-1/2" >
+      <div className="flex bg-white rounded-lg shadow-lg w-3/6 h-[500px]">
+        {/* Image Section */}
+        <div className="w-1/2">
           <img
-            src="https://external-preview.redd.it/ed38Y6aXySWAESp8sYUVXKcqVOqRQyUnwOaKKfpfA_w.jpg?auto=webp&s=5060d871d362ab0781b5577ad49f33a2d9d22e6d" // Replace with your image URL
+            src="https://external-preview.redd.it/ed38Y6aXySWAESp8sYUVXKcqVOqRQyUnwOaKKfpfA_w.jpg?auto=webp&s=5060d871d362ab0781b5577ad49f33a2d9d22e6d"
             alt="Login Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
         </div>
 
+        {/* Login Form Section */}
         <div className="w-1/2 p-10 gap-3">
           <h2 className="text-center text-2xl font">Login</h2>
-          <form onSubmit={handleSubmit } className="space-y-9">
+          <form onSubmit={handleSubmit} className="space-y-9">
             <div className="mt-8">
               <label className="block text-sm font-medium">Email Address</label>
               <input

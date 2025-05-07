@@ -1,62 +1,23 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axiosInstance from "../../axiosinstances";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const SignUp = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+const SignUp = ({ onSignup }) => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
   const navigate = useNavigate();
-
-  const successToast = () => {
-    toast.success("Signup successful", {
-      position: "top-center",
-    });
-  };
-
-  const doesNotExistToast = () => {
-    toast.error("User does not exist", {
-      position: "top-center",
-    });
-  };
-
-  const errorToast = () => {
-    toast.error("Invalid credentials", {
-      position: "top-center",
-    });
-  };
-
-  const SignupUser = async () => {
-    try {
-      const response = await axiosInstance.post("/register", {
-        username,
-        email,
-        password,
-        phone,
-      });
-
-      if (response.status === 200) {
-        successToast();
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-      } else if (response.status === 400) {
-        doesNotExistToast();
-      } else {
-        errorToast();
-      }
-    } catch (error) {
-      errorToast();
-      console.log(error);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await SignupUser();
+    // Simulate a successful signup
+    toast.success('Signup successful!', { position: 'top-center' });
+    setTimeout(() => {
+      onSignup(); // Update authentication state
+      navigate('/'); // Redirect to home page
+    }, 2000);
   };
 
   return (
@@ -65,7 +26,7 @@ const SignUp = () => {
         {/* Image Section */}
         <div className="w-1/2">
           <img
-            src="https://external-preview.redd.it/ed38Y6aXySWAESp8sYUVXKcqVOqRQyUnwOaKKfpfA_w.jpg?auto=webp&s=5060d871d362ab0781b5577ad49f33a2d9d22e6d" // Replace with your image URL
+            src="https://external-preview.redd.it/ed38Y6aXySWAESp8sYUVXKcqVOqRQyUnwOaKKfpfA_w.jpg?auto=webp&s=5060d871d362ab0781b5577ad49f33a2d9d22e6d"
             alt="Signup Illustration"
             className="w-full h-full object-cover rounded-l-lg"
           />
@@ -83,7 +44,6 @@ const SignUp = () => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-                autoComplete="username"
               />
             </div>
             <div>
@@ -94,7 +54,6 @@ const SignUp = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                autoComplete="email"
               />
             </div>
             <div>
@@ -105,7 +64,6 @@ const SignUp = () => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
-                autoComplete="tel"
               />
             </div>
             <div>
@@ -116,7 +74,6 @@ const SignUp = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                autoComplete="current-password"
               />
             </div>
             <button className="w-full bg-blue-600 text-white p-2 rounded mt-4">
@@ -124,8 +81,8 @@ const SignUp = () => {
             </button>
           </form>
           <div className="text-center text-sm mt-4">
-            Already have an account?{" "}
-            <Link to="/login" className="text-blue-600">
+            Already have an account?{' '}
+            <Link to="/login" className="text-blue-600 hover:underline">
               Login
             </Link>
           </div>
