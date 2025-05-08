@@ -8,6 +8,7 @@ import Country from "./Pages/Country";
 import Activities from "./Pages/Activities";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
+import LandingPage from "./Pages/LandingPage";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -26,14 +27,14 @@ const App = () => {
 
   return (
     <div>
-      <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+      {isAuthenticated && <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />}
       <Routes>
+        <Route path="/" element={isAuthenticated ? <Home /> : <LandingPage />} />
         <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/" element={isAuthenticated ? <Home /> : <Login onLogin={handleLogin} />} />
-        <Route path="/about" element={isAuthenticated ? <About /> : <Login onLogin={handleLogin} />} />
-        <Route path="/country" element={isAuthenticated ? <Country /> : <Login onLogin={handleLogin} />} />
-        <Route path="/activities" element={isAuthenticated ? <Activities /> : <Login onLogin={handleLogin} />} />
+        <Route path="/about" element={isAuthenticated ? <About /> : <LandingPage />} />
+        <Route path="/country" element={isAuthenticated ? <Country /> : <LandingPage />} />
+        <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
       </Routes>
       <Footer />
     </div>
