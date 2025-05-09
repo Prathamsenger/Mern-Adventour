@@ -39,10 +39,10 @@ const LandingPage = () => {
           <SwiperSlide>
             <div className="flex items-center justify-center h-150 p-5">
               <div
-                className="h-full w-full flex items-center justify-center bg-cover bg-center"
+                className="h-200 w-full flex items-center justify-center bg-auto bg-center"
                 style={{
                   backgroundImage:
-                    "url('https://cdn.sriggle.tech/kantents/production/1/1345/06/ce100e07-fc5b-485e-8cd3-45f74d02f45f.png')",
+                    "url('http://i.huffpost.com/gen/1871544/images/o-TRAVELING-facebook.jpg')",
                 }}
               >
                 <div className="bg-opacity-50 p-6 rounded-xl text-center">
@@ -61,7 +61,7 @@ const LandingPage = () => {
           <SwiperSlide>
             <div className="flex items-center justify-center h-150 p-4">
               <div
-                className="h-full w-full flex items-center justify-center bg-cover"
+                className="h-200 w-full flex items-center justify-center bg-cover"
                 style={{
                   backgroundImage:
                     "url('https://wallpapercave.com/wp/wp3812055.jpg')",
@@ -83,7 +83,7 @@ const LandingPage = () => {
           <SwiperSlide>
             <div className="flex items-center justify-center h-150 p-5">
               <div
-                className="h-full w-full flex items-center justify-center bg-cover bg-center"
+                className="h-200 w-full flex items-center justify-center bg-cover bg-center"
                 style={{
                   backgroundImage:
                     "url('https://www.tripsavvy.com/thmb/Nrhf1_k96t_SphJsN4XAcoNDTvc=/2121x1414/filters:fill(auto,1)/GettyImages-584374227-58ac1d273df78c345b154d7a.jpg')",

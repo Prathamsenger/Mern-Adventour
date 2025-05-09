@@ -76,4 +76,23 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const contactUs = async (req, res) => {
+  const { name, email, message } = req.body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+
+  try {
+    // Simulate saving the message to a database or sending an email
+    console.log("Contact Form Submission:", { name, email, message });
+
+    // Respond with success
+    res.status(200).json({ message: "Message sent successfully!" });
+  } catch (error) {
+    console.error("Error saving contact form submission:", error);
+    res.status(500).json({ message: "Failed to send your message. Please try again later." });
+  }
+};
+
+module.exports = { register, login ,contactUs};
