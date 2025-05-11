@@ -16,7 +16,6 @@ const getAllusers = async (req, res, next) => {
   }
 };
 
-// Function to create a new user
 const createUser = async (req, res, next) => {
   try {
     const { username, email, password, role, phone } = req.body;
@@ -26,7 +25,6 @@ const createUser = async (req, res, next) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Check if username already exists
     const existingUser = await User.findOne({ username });
     if (existingUser) {
       return res.status(400).json({ message: "Username already exists" });
