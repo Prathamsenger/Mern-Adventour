@@ -84,7 +84,6 @@ const contactUs = async (req, res) => {
   }
 
   try {
-    // Simulate saving the message to a database or sending an email
     console.log("Contact Form Submission:", { name, email, message });
 
     // Respond with success
