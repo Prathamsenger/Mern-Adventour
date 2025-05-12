@@ -30,7 +30,6 @@ axiosInstance.interceptors.response.use(
         return response;
     },
     (error) => {
-        // console.log("Response error:",error);
         if(error.response.status === 401){
             console.log("Unauthorized");
         }
