@@ -183,7 +183,6 @@ export default function About() {
           {tabContent[activeTab]}
         </div>
 
-        {/* Display team members when Team tab is active */}
         {activeTab === 'team' && (
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (

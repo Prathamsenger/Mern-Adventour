@@ -14,15 +14,15 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleSignup = () => {
-    setIsAuthenticated(true); // Update authentication state
+    setIsAuthenticated(true); 
   };
 
   const handleLogin = () => {
-    setIsAuthenticated(true); // Update authentication state
+    setIsAuthenticated(true); 
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false); // Reset authentication state
+    setIsAuthenticated(false); 
   };
 
   return (
