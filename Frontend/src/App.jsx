@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -11,7 +11,14 @@ import Login from "./Pages/Login";
 import LandingPage from "./Pages/LandingPage";
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+ const [isAuthenticated, setIsAuthenticated] = useState(
+    () => JSON.parse(localStorage.getItem("isAuthenticated")) || false
+  );
+
+    useEffect(() => {
+    localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+  }, [isAuthenticated]);
+
 
   const handleSignup = () => {
     setIsAuthenticated(true); 
