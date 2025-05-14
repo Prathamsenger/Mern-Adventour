@@ -5,6 +5,7 @@ import 'swiper/css/pagination';
 import HeroImages from '../components/HeroImages';
 import Services from '../components/Services';
 import Top from '../components/Top';
+import Booking from '../components/Booking';
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
           <HeroImages/>
           <Services/>
           <Top/>
+          <Booking/>
           
 </div>
   )}
