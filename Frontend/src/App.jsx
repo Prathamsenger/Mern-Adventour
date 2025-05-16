@@ -9,6 +9,8 @@ import Activities from "./Pages/Activities";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import LandingPage from "./Pages/LandingPage";
+import MapLoader from "./components/Maploader";
+import AutocompleteInput from "./components/Autocompleteinput";
 
 const App = () => {
  const [isAuthenticated, setIsAuthenticated] = useState(
@@ -44,6 +46,9 @@ const App = () => {
         <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
       </Routes>
       <Footer />
+       <MapLoader>
+      <AutocompleteInput />
+    </MapLoader>
     </div>
   );
 };

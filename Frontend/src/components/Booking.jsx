@@ -3,12 +3,13 @@ import payment from "../assets/images/payment.png";
 import vehicle from "../assets/images/vehicle.png";
 import booking_right from "../assets/images/Travel.webp";
 import { motion } from "framer-motion";
-import logo1 from "../assets/images/logo1.png";
+import logo1 from "../assets/images/express.png";
 import logo2 from "../assets/images/logo2.png";
 import logo3 from "../assets/images/logo3.png";
 import logo4 from "../assets/images/logo4.png";
 import logo5 from "../assets/images/logo5.png";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 const Booking = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -60,6 +61,8 @@ const Booking = () => {
         transition={{ duration: 0.8 }}
       >
         Book your next trip in <br /> 3 easy steps
+
+        
       </motion.h1>
 
       <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -120,36 +123,49 @@ const Booking = () => {
               <p>$2,500 USD + tax</p>|
                                |
              <p> 2,12,500 INR + tax</p>
+            
 
             </div>
+                  <Link
+          to="/country"
+          className="bg-red-600 text-white  px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
+        >
+          Book now
+        </Link>
           </div>
         </motion.div>
       </div>
 
       {/* logo section */}
-      <div className="flex flex-wrap items-center justify-center gap-8 my-10 ">
-        {[logo1, logo2, logo3, logo4, logo5].map((logo, index) =>
-          isMobile ? (
-            // No animation on mobile
-            <img key={index} src={logo} alt="Trips" />
-          ) : (
-            // Animated on md and up
-            <motion.img
-              key={index}
-              src={logo}
-              alt=""
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.15,
-                ease: "easeOut",
-              }}
-            />
-          )
-        )}
-      </div>
+      <div className="flex flex-wrap mt-35 mr-20 items-center justify-center gap-8 my-10">
+  {[logo1, logo2, logo3, logo4, logo5].map((logo, index) =>
+    isMobile ? (
+      // No animation on mobile
+      <img
+        key={index}
+        src={logo}
+        alt="Trips"
+        className="w-50 h-50 object-contain" // Set consistent width and height
+      />
+    ) : (
+      // Animated on md and up
+      <motion.img
+        key={index}
+        src={logo}
+        alt="Trips"
+        className="w-30 h-30 object-contain" // Set consistent width and height
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{
+          duration: 0.4,
+          delay: index * 0.15,
+          ease: "easeOut",
+        }}
+      />
+    )
+  )}
+</div>
     </div>
   );
 };
