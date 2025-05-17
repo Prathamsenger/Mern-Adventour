@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,42 +13,41 @@ import MapLoader from "./components/Maploader";
 import AutocompleteInput from "./components/Autocompleteinput";
 
 const App = () => {
- const [isAuthenticated, setIsAuthenticated] = useState(
+  const [isAuthenticated, setIsAuthenticated] = useState(
     () => JSON.parse(localStorage.getItem("isAuthenticated")) || false
   );
 
-    useEffect(() => {
+  useEffect(() => {
     localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
   }, [isAuthenticated]);
 
-
   const handleSignup = () => {
-    setIsAuthenticated(true); 
+    setIsAuthenticated(true);
   };
 
   const handleLogin = () => {
-    setIsAuthenticated(true); 
+    setIsAuthenticated(true);
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false); 
+    setIsAuthenticated(false);
   };
+  const [isLoading, setIsLoading] = useState(false); // Remove loading state
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       {isAuthenticated && <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />}
-      <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <LandingPage />} />
-        <Route path="/signup" element={<Signup onSignup={handleSignup} />} />
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route path="/about" element={isAuthenticated ? <About /> : <LandingPage />} />
-        <Route path="/country" element={isAuthenticated ? <Country /> : <LandingPage />} />
-        <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
-      </Routes>
+      <div style={{ flex: 1 }}> {/* Add flex: 1 to the content area */}
+        <Routes>
+          <Route path="/" element={isAuthenticated ? <Home /> : <LandingPage />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/about" element={isAuthenticated ? <About /> : <LandingPage />} />
+          <Route path="/country" element={isAuthenticated ? <Country /> : <LandingPage />} />
+          <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
+        </Routes>
+      </div>
       <Footer />
-       <MapLoader>
-      <AutocompleteInput />
-    </MapLoader>
     </div>
   );
 };
