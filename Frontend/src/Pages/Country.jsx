@@ -73,9 +73,9 @@ const Country = () => {
       <div className="mt-12 mb-12 flex justify-center"> 
         <Link
           to=""
-          className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-800 transition duration-300"
+          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:translate-y-1"
         >
-          Generate trip
+          <button >Generate trip</button>
         </Link>
       </div>
     </div>
