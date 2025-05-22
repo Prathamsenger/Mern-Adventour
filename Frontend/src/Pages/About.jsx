@@ -55,7 +55,6 @@ export default function About() {
     )
   };
 
-  // Team members data
   const teamMembers = [
     {
       name: "Emma Johnson",
