@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PlaceAutocompleteElement from "react-google-autocomplete";
 import { SelectBudgetOption, SelectTravelesList } from '../components/options';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom'; // Correct import
+import { Link } from 'react-router-dom'; 
 
 const Country = () => {
   const [place, setPlace] = useState();
