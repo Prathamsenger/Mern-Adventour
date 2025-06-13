@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home from "./Pages/Home";
@@ -9,8 +9,6 @@ import Activities from "./Pages/Activities";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import LandingPage from "./Pages/LandingPage";
-import MapLoader from "./components/Maploader";
-import AutocompleteInput from "./components/Autocompleteinput";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(
@@ -32,21 +30,18 @@ const App = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
   };
-  const [isLoading, setIsLoading] = useState(false); // Remove loading state
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <div>
       {isAuthenticated && <Header isAuthenticated={isAuthenticated} onLogout={handleLogout} />}
-      <div style={{ flex: 1 }}> {/* Add flex: 1 to the content area */}
-        <Routes>
-          <Route path="/" element={isAuthenticated ? <Home /> : <LandingPage />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/about" element={isAuthenticated ? <About /> : <LandingPage />} />
-          <Route path="/country" element={isAuthenticated ? <Country /> : <LandingPage />} />
-          <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={isAuthenticated ? <Home /> : <LandingPage />} />
+        <Route path="/signup" element={<Signup onSignup={handleSignup} />} /> {/* Pass handleSignup as onSignup */}
+        <Route path="/login" element={<Login onLogin={handleLogin} />} /> {/* Pass handleLogin as onLogin */}
+        <Route path="/about" element={isAuthenticated ? <About /> : <LandingPage />} />
+        <Route path="/country" element={isAuthenticated ? <Country /> : <LandingPage />} />
+        <Route path="/activities" element={isAuthenticated ? <Activities /> : <LandingPage />} />
+      </Routes>
       <Footer />
     </div>
   );

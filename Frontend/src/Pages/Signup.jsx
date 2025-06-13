@@ -36,7 +36,7 @@ const Signup = ({ onSignup }) => {
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
         successToast();
-        onSignup(); // Update authentication state
+    onSignup()// Update authentication state
         setTimeout(() => {
           navigate("/"); // Redirect to home page
         }, 2000);
@@ -54,6 +54,7 @@ const Signup = ({ onSignup }) => {
   };
 
   const handleSubmit = async (e) => {
+  
     e.preventDefault();
     await signupUser();
   };
