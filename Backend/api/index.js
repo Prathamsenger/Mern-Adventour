@@ -21,7 +21,9 @@ app.use(express.urlencoded({ extended: false }));
 
 
 console.log("Server file is executing...");
-
+app.get('/', (req, res) => {
+  res.send('✅ Backend is working!');
+});
 
 
 
