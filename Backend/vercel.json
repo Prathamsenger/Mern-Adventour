@@ -3,7 +3,7 @@
   
   "routes": [
     {
-      "src": "/userapi(.*)",
+      "src": "/auth(.*)",
       "dest": "/api/index.js"
     }
   ]
