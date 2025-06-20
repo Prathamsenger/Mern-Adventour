@@ -2,9 +2,8 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL:
-    process.env.NODE_ENV === "production"
-      ? "https://mern-adventour-1.onrender.com/api/auth" // No space at the start!
-      : "http://localhost:5000/api/auth",
+    "https://mern-adventour-1.onrender.com/api/auth" // No space at the start!
+     
 });
 
 axiosInstance.interceptors.request.use(
