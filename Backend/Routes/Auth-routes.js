@@ -8,9 +8,7 @@ const {login ,register,contactUs}= require('../Controllers/Authcontroller');
 router.route("/login").post(login);
 router.route("/register").post(register);
 router.route("/contactus").post(contactUs);
-router.get('/', (req, res) => {
-  res.send('✅ Backend is running with login/register!');
-});
+
 
 router.get("/protected", authenticateToken, (req, res) => {
     res.status(200).json({ msg: "This is a protected route", user: req.user });
