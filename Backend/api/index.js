@@ -1,15 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const serverless = require("serverless-http")
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const connectDB = require('./config/config');
-const router = require('./Routes/Auth-routes');
-const adminRoute = require("./Routes/Admin-route");
-const errorMiddleware = require("./Middleware/Error-middleware");
+const connectDB = require('../config/config');
+const router = require('../Routes/Auth-routes');
+const adminRoute = require("../Routes/Admin-route");
+const errorMiddleware = require("../Middleware/Error-middleware");
 dotenv.config();
 
 const app = express();
-const Port = 5000;
+// const Port = 5000;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -33,6 +34,9 @@ app.use("/api/admin",adminRoute);
 app.use(errorMiddleware);
 
 connectDB();
-app.listen(Port,()=>{
-    console.log(`Server is running on http://localhost:${Port}`);
-})
+
+module.exports = app 
+module.exports.handler = serverless(app)
+// app.listen(Port,()=>{
+//     console.log(`Server is running on http://localhost:${Port}`);
+// })
