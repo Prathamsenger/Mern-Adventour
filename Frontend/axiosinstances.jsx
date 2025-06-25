@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
   baseURL:
-    "https://mern-adventour-1.onrender.com/api/auth" // No space at the start!
+    "https://mern-adventour-1.onrender.com/api/auth" 
      
 });
 

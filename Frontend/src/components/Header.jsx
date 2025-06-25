@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = ({ isAuthenticated, onLogout }) => {
@@ -15,11 +14,9 @@ const Header = ({ isAuthenticated, onLogout }) => {
             <Link to="/about" className="px-2 h-1 hover:underline transition duration-300">
               About
             </Link>
-            <Link to="/country" className="px-2 h-1 hover:underline transition duration-300">
-              Holidays
-            </Link>
+           
             <Link to="/activities" className="px-2 h-1 hover:underline transition duration-300">
-              Activities
+              Trips
             </Link>
             <button
               onClick={onLogout}
