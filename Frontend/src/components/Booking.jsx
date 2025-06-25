@@ -127,7 +127,7 @@ const Booking = () => {
 
             </div>
                   <Link
-          to="/country"
+          to="/activities"
           className="bg-red-600 text-white  px-4 py-2 rounded-md hover:bg-red-700 transition duration-300"
         >
           Book now
@@ -136,11 +136,9 @@ const Booking = () => {
         </motion.div>
       </div>
 
-      {/* logo section */}
       <div className="flex flex-wrap mt-35 mr-20 items-center justify-center gap-8 my-10">
   {[logo1, logo2, logo3, logo4, logo5].map((logo, index) =>
     isMobile ? (
-      // No animation on mobile
       <img
         key={index}
         src={logo}
