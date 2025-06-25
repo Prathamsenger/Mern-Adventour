@@ -45,7 +45,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4">Connect with us</h3>
             <ul className="space-y-2">
-              {['About Us', 'country', 'Contact', ].map((item) => (
+              {['About Us', 'activities', 'Contact', ].map((item) => (
                 <li key={item}>
                   <a href="#" className="flex items-center text-gray-400 hover:text-white transition-colors">
                     <AiOutlineRight size={16} className="mr-2" />
